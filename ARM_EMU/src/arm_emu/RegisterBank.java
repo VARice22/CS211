@@ -13,7 +13,7 @@ public class RegisterBank {
         }
     }
     public Word get(int index){
-        int[] i = rs.get(index).get();
+        boolean[] i = rs.get(index).get();
         Word r = new Word(i.length);
         r.set(i);
         return r;
@@ -22,4 +22,3 @@ public class RegisterBank {
         rs.get(index).set(r.get());
     }
 }
-

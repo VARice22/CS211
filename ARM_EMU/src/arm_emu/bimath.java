@@ -9,7 +9,7 @@ package arm_emu;
  *
  * @author Sharo
  */
-public class bimath 
+public class bimath
 {
     public static byte[] multiplier(byte[] a, byte[] b)
     {
