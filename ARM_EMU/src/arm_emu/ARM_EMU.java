@@ -1,6 +1,5 @@
 package arm_emu;
 
-
 public class ARM_EMU {
 
     public static void main(String[] args) {
