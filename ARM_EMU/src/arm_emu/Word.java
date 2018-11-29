@@ -1,6 +1,5 @@
 package arm_emu;
 
-//shi
 public class Word {
     private boolean[] bs;
     public int bits;

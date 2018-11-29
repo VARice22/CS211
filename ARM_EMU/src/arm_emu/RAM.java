@@ -1,6 +1,5 @@
 package arm_emu;
 
-//ni
 public class RAM {
     
    private boolean[] rs;

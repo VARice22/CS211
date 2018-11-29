@@ -1,6 +1,5 @@
 package arm_emu;
 
-//san
 import java.util.ArrayList;
 
 public class RegisterBank {
