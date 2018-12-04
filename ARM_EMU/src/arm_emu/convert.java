@@ -1,7 +1,7 @@
 package arm_emu;
 
 public class convert {
-        boolean[] dtc(int value,int bits)//decimal to two complement
+    boolean[] dtc(int value,int bits)//decimal to two complement
     {
         boolean[] t=new boolean[bits];
         if (value>=0)
@@ -55,5 +55,50 @@ public class convert {
             }
         }
         return k;
+    }
+    
+    boolean[] stc(boolean[] t, boolean[] y)// subtract twos complement
+    {
+        //flip second num
+        for(int i=0; i<y.length; i++)
+        {
+            if(y[i])y[i]=false;
+            else if(!y[i])y[i]=true;
+        }
+        //create 1
+        boolean[] addOne=new boolean[y.length];
+        for(int i=0; i<addOne.length; i++)
+        {
+            if(i+1==addOne.length)addOne[i]=true;
+            else addOne[i]=false;
+        }
+        //add 1
+        boolean carry=false;
+        boolean[] k=new boolean[y.length];
+        
+        for(int i=k.length-1; i>=0;i--)
+        {
+            if(addOne[i]==false && y[i]==false && carry==false){k[i]=false; carry=false;}
+            else if(addOne[i] && y[i] && carry){k[i]=true; carry=true;}
+            else{
+                if(addOne[i]&&y[i] || carry&&y[i] || carry&&addOne[i]){k[i]=false; carry=true;}
+                else {k[i]=true; carry=false;}
+            }
+        }
+        
+        //subtract
+        carry=false;
+        boolean[] outPut=new boolean[t.length];
+        
+        for(int i=outPut.length-1; i>=0;i--)
+        {
+            if(t[i]==false && k[i]==false && carry==false){outPut[i]=false; carry=false;}//0
+            else if(t[i] && k[i] && carry){outPut[i]=true; carry=true;}//3
+            else{
+                if(t[i]&&k[i] || carry&&k[i] || carry&&t[i]){outPut[i]=false; carry=true;}//2
+                else {outPut[i]=true; carry=false;}//1
+            }
+        }
+        return outPut;
     }
 }
