@@ -2,7 +2,8 @@ package arm_emu;
 
 public class ARM_EMU {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    /*{
         ARM leg= new ARM(10,16,12,4);
         int sp=0;
         leg.mov(0,3,0);
@@ -12,7 +13,17 @@ public class ARM_EMU {
         sp=leg.ldr(2,sp,64,false,false);
         sp=leg.ldr(3,sp,0,false,false);
         leg.add(4,2,3);
-leg.print();
+        leg.print();
+    }*/
+    {
+        reader input= new reader();
+        input.setup();
+        String[] in=input.readerTest();
+        for(int i=0; i<in.length; i++)
+        {
+            System.out.println(in[i]);
+        }
+    
     }
     
 }

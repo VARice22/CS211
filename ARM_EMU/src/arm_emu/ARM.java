@@ -80,19 +80,19 @@ public class ARM {
         }
         System.out.println();
         Word yuji=mb.get(12*4,0);
-            boolean[] everylead= yuji.get();
-            for(int j=0; j<everylead.length;j++)
-            {
-                if(j%32!=0){
-                        if(everylead[j])System.out.print(1);
-                        else System.out.print(0);
-                }
-                else if(j%32==0){
-                System.out.println();
-                if(everylead[j])System.out.print(1);
-                else System.out.print(0);
-                }
+        boolean[] everylead= yuji.get();
+        for(int j=0; j<everylead.length;j++)
+        {
+            if(j%32!=0){
+                    if(everylead[j])System.out.print(1);
+                    else System.out.print(0);
             }
+            else if(j%32==0){
+            System.out.println();
+            if(everylead[j])System.out.print(1);
+            else System.out.print(0);
+            }
+        }
     }
     
 }
