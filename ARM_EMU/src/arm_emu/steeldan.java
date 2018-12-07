@@ -15,7 +15,7 @@ public class steeldan {
         reader input= new reader();
         input.setup();
         String[] in=input.readerTest();
-        //for(int i=0; i<in.length; i++) System.out.println(in[i]);
+        //for(int i=0; i<in.length; i++) System.out.println(in[i]);//print function
         
         for(int cline=0; cline<in.length; cline++)//run throw program
         {
@@ -33,13 +33,13 @@ public class steeldan {
                     if(ch+1==in[cline].length()) end=ch+1;
                     else end=ch;
                 }
-                //System.out.println(in[cline]+"  "+ch+" "+start+" "+end);
+                //System.out.println(in[cline]+"  "+ch+" "+start+" "+end);//print line, current char, start and end values
                 if(start!=-5 && end!=-5)
                 {
                     comd=in[cline].substring(start, end);
                     start=-5;
                     end=-5;
-                    //System.out.println(comd);
+                    //System.out.println(comd);//prind comand that has been found
                 }
             }
         }
