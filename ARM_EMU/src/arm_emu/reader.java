@@ -5,11 +5,13 @@ import java.io.File;
 
 public class reader
 {
-    File code= new File("ARM_code.txt");
-    String[] cline;
+    //File code= new File("ARM_code.txt");
+    //String[] cline;
+    String[] cline= new String[1];
     
     public void setup()
     {
+    /*
         try
         {
         Scanner scan= new Scanner(code);
@@ -30,6 +32,9 @@ public class reader
             }
         }
         catch (Exception e){}
+    */
+        cline[0]="sub     sp, sp, #8";
+        //cline[1]="str     r0, [sp, #4]";
     }
     
     public String[] readerTest()
