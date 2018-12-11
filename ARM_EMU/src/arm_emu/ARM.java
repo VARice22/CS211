@@ -75,6 +75,16 @@ public class ARM {
         bicycle.set(green);
         rb.set(Rd, bicycle);
     }
+    public void mul(int Rd, int Rn, int Rc){
+        Word black= rb.get(Rn);
+        Word guitar=rb.get(Rc);
+        boolean[] red=black.get();
+        boolean[] hair=guitar.get();
+        boolean[] green=vert.mul(red,hair);
+        Word bicycle=new Word(rbits);
+        bicycle.set(green);
+        rb.set(Rd, bicycle);
+    }
     
     public void print(){
         for(int i=0; i<rsize;i++)

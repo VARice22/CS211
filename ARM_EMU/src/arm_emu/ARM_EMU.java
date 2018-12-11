@@ -6,6 +6,7 @@ public class ARM_EMU {
     { 
         String[][] input=steeldan.read();
         //steeldan.print(input);
+        steeldan.findcomd(input);
         
     }
     /*{

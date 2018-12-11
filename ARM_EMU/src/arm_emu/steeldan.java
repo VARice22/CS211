@@ -63,12 +63,24 @@ public class steeldan {
     }
     public static void findcomd(String[][] input)
     {
+        int g=0;
+        //list of reserved words
+        String[] resword= new String[1];
+        resword[0]="sub";
+        
         for(int i=0; i<input.length; i++)
         {
             for(int j=0; j<input[i].length; j++)
             {
-                for(int k=0; k<input[i].length; k++)//change input to an array of comds
+                for(int k=0; k<resword.length; k++)//change input to an array of comds
                 {
+                    if(input[i][j]!=null)
+                    {
+                        if(input[i][j].equalsIgnoreCase(resword[k]))
+                        {
+
+                        }
+                    }    
                     
                 }
             }
