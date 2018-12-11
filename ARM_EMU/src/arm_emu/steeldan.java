@@ -11,12 +11,13 @@ package arm_emu;
  */
 public class steeldan {
     
-    public static void read(){
+    public static String[][] read(){
         reader input= new reader();
         input.setup();
         String[] in=input.readerTest();
         //for(int i=0; i<in.length; i++) System.out.println(in[i]);//print function
-        
+        String[][] commands= new String[in.length][10];
+        int line=0, comdnum=0;
         for(int cline=0; cline<in.length; cline++)//run throw program
         {
             int start=-5,end=-5;//lines MUST be less that 8000 char in length
@@ -39,12 +40,39 @@ public class steeldan {
                     comd=in[cline].substring(start, end);
                     start=-5;
                     end=-5;
+                    commands[line][comdnum]=comd;
+                    comdnum++;
                     //System.out.println(comd);//prind comand that has been found
                 }
             }
+            line++;
+            comdnum=0;
         }
-        
+        return commands;
     }
-    
-
-}
+    public static void print(String[][] input)
+    {
+        for(int i=0; i<input.length; i++)
+        {
+            for(int j=0; j<input[i].length; j++)
+            {
+                System.out.print(input[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+    public static void findcomd(String[][] input)
+    {
+        for(int i=0; i<input.length; i++)
+        {
+            for(int j=0; j<input[i].length; j++)
+            {
+                for(int k=0; k<input[i].length; k++)//change input to an array of comds
+                {
+                    
+                }
+            }
+            
+        }
+    }
+}    

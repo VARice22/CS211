@@ -4,7 +4,9 @@ public class ARM_EMU {
 
     public static void main(String[] args)
     { 
-        steeldan.read();
+        String[][] input=steeldan.read();
+        //steeldan.print(input);
+        
     }
     /*{
         ARM leg= new ARM(10,16,12,4);
