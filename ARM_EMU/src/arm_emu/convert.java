@@ -128,7 +128,7 @@ public class convert {
                     else if(a[u] && p[u] && carry){p[u]=true; carry=true;}
                     else{
                         if(a[u]&&p[u] || carry&&p[u] || carry&&a[u]){p[u]=false; carry=true;}
-                        else/*if(!a[u]&&!b[u] || !carry&&!b[u] || !carry&&!a[u])*/{p[u]=true; carry=false;}
+                        else/*if(!a[u]&&!p[u] || !carry&&!p[u] || !carry&&!a[u])*/{p[u]=true; carry=false;}
                     }
                 }
             }
