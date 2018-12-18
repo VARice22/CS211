@@ -7,17 +7,18 @@ public class RegisterBank {
     
     public RegisterBank(int size, int bits){
         rs = new ArrayList<Word>();
+        rs.add(new Word(bits));
         for(int i = 0; i < size; i++){
             rs.add(new Word(bits));
         }
     }
     public Word get(int index){
-        boolean[] i = rs.get(index).get();
+        boolean[] i = rs.get(index+1).get();
         Word r = new Word(i.length);
         r.set(i);
         return r;
     }
     public void set(int index, Word r){
-        rs.get(index).set(r.get());
+        rs.get(index+1).set(r.get());
     }
 }

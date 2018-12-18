@@ -13,14 +13,14 @@ public class ARM {
         rsize=size_reg;
     }
     
-    public void mov(int Rd, int Rn, int bitshift){
+    public void mov(int Rd, int Rn){//*, int bitshift){
         boolean[] white=vert.dtc(Rn,rbits);
         Word summer= new Word(rbits);
         summer.set(white);
         rb.set(Rd,summer);
     }
     
-    public int str(int Rd, int Rn, int o, boolean pre, boolean mod_pre){
+    public int str(int Rd, int Rn, int o){/*, boolean pre, boolean mod_pre){
         if(pre){
         Word temp=rb.get(Rd);
         mb.set(temp,Rn+o);
@@ -31,13 +31,13 @@ public class ARM {
         mb.set(temp,Rn);
         return Rn+o;}
         
-        else {
+        else {*/
         Word temp=rb.get(Rd);
-        mb.set(temp,Rn+o);
-        return Rn;}
+        mb.set(temp,Rn+o+1);
+        return Rn;//}
     }
     
-    public int ldr(int Rd, int Rn, int o, boolean pre, boolean mod_pre){
+    public int ldr(int Rd, int Rn, int o){/*, boolean pre, boolean mod_pre){
         if(pre){
         Word temp=mb.get(rbits/8,Rn+o);
         rb.set(Rd,temp);
@@ -48,10 +48,10 @@ public class ARM {
         rb.set(Rd,temp);
         return Rn+o;}
         
-        else {
-        Word temp=mb.get(rbits/8,Rn+o);
+        else {*/
+        Word temp=mb.get(rbits/8,Rn+o+1);
         rb.set(Rd,temp);
-        return Rn;}
+        return Rn;//}
     }
     
     public void add(int Rd, int Rn, int Rc){
@@ -85,13 +85,44 @@ public class ARM {
         bicycle.set(green);
         rb.set(Rd, bicycle);
     }
+    public void and(int Rd, int Rn, int Rc){
+        Word black= rb.get(Rn);
+        Word guitar=rb.get(Rc);
+        boolean[] red=black.get();
+        boolean[] hair=guitar.get();
+        boolean[] green=vert.and(red,hair);
+        Word bicycle=new Word(rbits);
+        bicycle.set(green);
+        rb.set(Rd, bicycle);
+    }
+    public void orr(int Rd, int Rn, int Rc){
+        Word black= rb.get(Rn);
+        Word guitar=rb.get(Rc);
+        boolean[] red=black.get();
+        boolean[] hair=guitar.get();
+        boolean[] green=vert.orr(red,hair);
+        Word bicycle=new Word(rbits);
+        bicycle.set(green);
+        rb.set(Rd, bicycle);
+    }
+    public void eor(int Rd, int Rn, int Rc){
+        Word black= rb.get(Rn);
+        Word guitar=rb.get(Rc);
+        boolean[] red=black.get();
+        boolean[] hair=guitar.get();
+        boolean[] green=vert.eor(red,hair);
+        Word bicycle=new Word(rbits);
+        bicycle.set(green);
+        rb.set(Rd, bicycle);
+    }
     
     public void print(){
-        for(int i=0; i<rsize;i++)
+        for(int i=-1; i<rsize;i++)
         {
             Word yuji=rb.get(i);
             boolean[] everylead= yuji.get();
-            System.out.print("R"+i+"   ");
+            if(i>=0)System.out.print("R"+i+"   ");
+            else System.out.print("sp   ");
             for(int j=0; j<everylead.length;j++)
             {
                 if(everylead[j])System.out.print(1);
@@ -99,7 +130,7 @@ public class ARM {
             }
             System.out.println();
         }
-        System.out.println();
+        
         Word yuji=mb.get(12*4,0);
         boolean[] everylead= yuji.get();
         for(int j=0; j<everylead.length;j++)

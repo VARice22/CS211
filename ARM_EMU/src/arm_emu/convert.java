@@ -104,38 +104,65 @@ public class convert {
     public static boolean[] mul(boolean[] a, boolean[] b)
     {
         //initalize product
-        boolean[] p= new boolean[32];
+        boolean[] p= new boolean[a.length];
         for (byte h3=0; h3<p.length; h3++)p[h3]=false;
         
-        for(byte i=31;i>=0 ;i--)
+        for(int i=p.length-1;i>=0 ;i--)
         {
             //leftshift
-            if(i!=31){
-            boolean shifttemp=a[0];
-            for(byte j=0;j<a.length;j++)
-            {
-                if(j+1==a.length) a[j]=shifttemp;
-                else a[j]=a[j+1];
-            }
+            if(i!=a.length-1){
+                boolean shifttemp=a[0];
+                for(byte j=0;j<a.length;j++)
+                {
+                    if(j+1==a.length) a[j]=shifttemp;
+                    else a[j]=a[j+1];
+                }
             }
             
             if(b[i]==true)
             {
                 boolean carry=false;
-                boolean[] k=new boolean[a.length];
-        
-                for(int u=k.length-1; u>=0;u--)
+                for(int u=p.length-1; u>=0;u--)
                 {
-                    if(a[u]==false && b[u]==false && carry==false){k[u]=false; carry=false;}
-                    else if(a[u] && b[u] && carry){k[u]=true; carry=true;}
+                    if(a[u]==false && p[u]==false && carry==false){p[u]=false; carry=false;}
+                    else if(a[u] && p[u] && carry){p[u]=true; carry=true;}
                     else{
-                        if(a[u]&&b[u] || carry&&b[u] || carry&&a[u]){k[u]=false; carry=true;}
-                        else {k[i]=true; carry=false;}
+                        if(a[u]&&p[u] || carry&&p[u] || carry&&a[u]){p[u]=false; carry=true;}
+                        else/*if(!a[u]&&!b[u] || !carry&&!b[u] || !carry&&!a[u])*/{p[u]=true; carry=false;}
                     }
                 }
-                return k;
             }
         }
         return p;
+    }
+    public static boolean[] and(boolean[] a, boolean[] b)
+    {
+        boolean[] ans= new boolean[a.length];
+        for(int i=0; i<ans.length;i++)
+        {
+            if(a[i]&&b[i])ans[i]=true;
+            else ans[i]=false;
+        }
+        return a;
+    }
+    public static boolean[] orr(boolean[] a, boolean[] b)
+    {
+        boolean[] ans= new boolean[a.length];
+        for(int i=0; i<ans.length;i++)
+        {
+            if(a[i]||b[i])ans[i]=true;
+            else ans[i]=false;
+        }
+        return a;
+    }
+    public static boolean[] eor(boolean[] a, boolean[] b)
+    {
+        boolean[] ans= new boolean[a.length];
+        for(int i=0; i<ans.length;i++)
+        {
+            if(a[i]&&b[i]!=false && a[i]||b[i])ans[i]=true;
+            else ans[i]=false;
+        }
+        return a;
     }
 }

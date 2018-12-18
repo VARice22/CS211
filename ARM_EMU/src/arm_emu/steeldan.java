@@ -10,7 +10,7 @@ package arm_emu;
  * @author avance
  */
 public class steeldan {
-    
+    stringToComd std= new stringToComd();
     public static String[][] read(){
         reader input= new reader();
         input.setup();
@@ -50,7 +50,7 @@ public class steeldan {
         }
         return commands;
     }
-    public static void print(String[][] input)
+    public void print(String[][] input)
     {
         for(int i=0; i<input.length; i++)
         {
@@ -60,31 +60,29 @@ public class steeldan {
             }
             System.out.println();
         }
+        System.out.println();
+        System.out.println();
+        std.passPrint();
     }
-    public static void findcomd(String[][] input)
+    public void findcomd(String[][] input)
     {
-        int g=0;
+        //stringToComd std= new stringToComd();
         //list of reserved words
-        String[] resword= new String[1];
-        resword[0]="sub";
+        String[] resword={"add","sub","mul","and","eor","orr","ldr","str","mov"};
         
         for(int i=0; i<input.length; i++)
         {
-            for(int j=0; j<input[i].length; j++)
+            int g=0;
+            for(int k=0; k<resword.length; k++)//change input to an array of comds
             {
-                for(int k=0; k<resword.length; k++)//change input to an array of comds
+                //int g=0;
+                if(input[i][0].equalsIgnoreCase(resword[k]))
                 {
-                    if(input[i][j]!=null)
-                    {
-                        if(input[i][j].equalsIgnoreCase(resword[k]))
-                        {
-
-                        }
-                    }    
-                    
+                    g=k;
                 }
             }
-            
+            //System.out.println(i+" "+g);
+            std.comd(g+1,input,i);
         }
     }
 }    
