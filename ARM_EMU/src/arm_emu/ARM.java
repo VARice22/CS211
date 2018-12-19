@@ -1,5 +1,7 @@
 package arm_emu;
 
+import java.util.*;
+
 public class ARM {
     private RegisterBank rb;
     private RAM mb;
@@ -146,5 +148,27 @@ public class ARM {
             }
         }
     }
-    
+    public LinkedList<String> toFX()
+    {
+        //String[]
+        LinkedList<String> reglist=new LinkedList<String>();
+        for(int i=0; i<rsize;i++)
+        {
+            Word yuji=rb.get(i);
+            boolean[] everylead= yuji.get();
+            char[] reg=new char[everylead.length];
+            for(int j=0; j<everylead.length;j++)
+            {
+                if(everylead[j])reg[j]='1';
+                else reg[j]='0';
+            }
+            //for(int u=0;u<reg.length;u++){System.out.print(reg[u]);}System.out.println();
+            String temp=String.copyValueOf(reg);
+            reglist.add(temp);
+            //System.out.println(temp);
+            //System.out.println(reglist.get(i));
+        }
+        return reglist;
+    }
+    public int regnum(){return rsize;}
 }

@@ -5,12 +5,17 @@
  */
 package arm_emu;
 
-/**
- *
- * @author avance
- */
+import java.util.*;
+
 public class steeldan {
-    stringToComd std= new stringToComd();
+    stringToComd std;
+    int[] specs;
+    public steeldan(int[] s)
+    {
+        specs=s;
+        std= new stringToComd(s);
+    }
+    
     public static String[][] read(){
         reader input= new reader();
         input.setup();
@@ -85,4 +90,6 @@ public class steeldan {
             std.comd(g+1,input,i);
         }
     }
+    public LinkedList<String> getreg(){return std.passtoFX();}
+    public int passRegnum(){return std.passRegnum();}
 }    

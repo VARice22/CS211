@@ -5,12 +5,14 @@
  */
 package arm_emu;
 
-/**
- *
- * @author Sharo
- */
+import java.util.*;
+
 public class stringToComd{
-    ARM leg= new ARM(10,16,12,4);
+    ARM leg;
+    public stringToComd(int[] s)
+    {
+        leg= new ARM(s[0],s[1],s[2],s[3]);
+    }
     
     public void comd(int comd, String[][] input,int i)
     {
@@ -53,4 +55,6 @@ public class stringToComd{
         }
     }
     public void passPrint(){leg.print();}
+    public LinkedList<String> passtoFX(){return leg.toFX();}
+    public int passRegnum(){return leg.regnum();}
 }
